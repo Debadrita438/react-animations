@@ -22,8 +22,11 @@ class App extends Component {
         return (
             <div className='App'>
                 <h1>React Animations</h1>
-                <Modal show={this.state.modalIsOpen} closed={this.closeModal} />
-                <Backdrop show={this.state.modalIsOpen} />
+                {this.state.modalIsOpen && (
+                    <Modal show={this.state.modalIsOpen} closed={this.closeModal} />
+                )}
+                {this.state.modalIsOpen && <Backdrop show={this.state.modalIsOpen} />}{' '}
+                {/* Closing or removing modal happens instantly, it doesn't wait to check the component, so closing animation isn't played here */}
                 <button className='Button' onClick={this.showModal}>
                     Open Modal
                 </button>
